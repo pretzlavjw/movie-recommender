@@ -1,5 +1,5 @@
 <template>
-  <div id="register" class="text-center">
+  <div id="register" class="text-center styles">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -90,4 +90,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+  @import '../resources/styles.css';
+  .form-register {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    height: 35rem;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+</style>

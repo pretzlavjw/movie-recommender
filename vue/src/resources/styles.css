@@ -1,0 +1,20 @@
+html {
+    background-color: black;
+    background-image: url("background_image.png");
+    opacity: 99%;
+    width: 100%;
+    height: 100%;
+    /* min-height: 100%;
+    min-width: 1024px; */
+}
+#nav {
+    background-color: whitesmoke;
+}
+
+.styles {
+    color: rgb(238, 14, 238);
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+
+}
