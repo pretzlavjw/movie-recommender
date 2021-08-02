@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="text-center">
+  <div id="login" class="text-center styles">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -74,3 +74,17 @@ export default {
   }
 };
 </script>
+
+<style>
+  @import '../resources/styles.css';
+  .form-signin {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    height: 35rem;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+</style>
