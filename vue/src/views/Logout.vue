@@ -10,3 +10,7 @@ export default {
   }
 };
 </script>
+
+<style>
+  @import '../resources/styles.css';
+</style>
