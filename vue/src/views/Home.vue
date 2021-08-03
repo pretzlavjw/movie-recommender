@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <p>Movie title goes here?</p>
   </div>
 </template>
 
@@ -10,3 +10,20 @@ export default {
   name: "home"
 };
 </script>
+
+<style>
+
+.home {
+  color: rgb(238, 14, 238);;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+}
+</style>
