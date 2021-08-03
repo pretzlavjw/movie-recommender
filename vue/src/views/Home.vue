@@ -1,13 +1,19 @@
 <template>
   <div class="home">
+    <movie-list></movie-list>
     <h1>Home</h1>
     <p>Movie title goes here?</p>
   </div>
 </template>
 
 <script>
+
+import MovieList from "@/components/MovieList.vue";
 export default {
-  name: "home"
+  name: "home",
+  components: {
+    MovieList
+  }
 };
 </script>
 
