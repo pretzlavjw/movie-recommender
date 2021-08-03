@@ -1,5 +1,8 @@
 <template>
   <div id="login" class="text-center styles">
+    <div id="description">Don't know what to watch? We have you covered. 
+      As you favorite movies you like and skip the ones you don't, this app will recommend movies for you to watch. 
+      If you find one that you haven't seen, add it to your list of favorites.</div>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -78,13 +81,26 @@ export default {
 <style>
   @import '../resources/styles.css';
   .form-signin {
-    display: flex;
+    display: inline-flex;
     height: 100vh;
     flex-direction: column;
     height: 35rem;
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    margin-left: 50%;
+    background-color: silver;
+    justify-self: center
+  }
+
+  #description {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 80px;
+    text-align: center;
+    background-color: silver;
   }
 </style>
