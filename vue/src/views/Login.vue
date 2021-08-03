@@ -2,7 +2,7 @@
   <div id="login" class="text-center styles">
     <div id="description">Don't know what to watch? We have you covered. 
       As you favorite movies you like and skip the ones you don't, this app will recommend movies for you to watch. 
-      If you find one that you haven't seen, add it to your watch later list.</div>
+      If you find one that you haven't seen, add it to a list to watch later.</div>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -15,25 +15,29 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
+      <div class="username-well">
+        <label for="username" class="sr-only">Username</label>
+        <input
+          type="text"
+          id="username"
+          class="form-control"
+          placeholder="Username"
+          v-model="user.username"
+          required
+          autofocus
+        />
+      </div>
+      <div class="password-well">
+        <label for="password" class="sr-only">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Password"
+          v-model="user.password"
+          required
+        />
+      </div>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
@@ -84,12 +88,13 @@ export default {
     display: flex;
     height: 100vh;
     flex-direction: column;
-    height: 35rem;
+    height: 20rem;
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
     justify-content: space-around;
     justify-self: center;
+    margin: 1rem 0,
     
   }
 
@@ -98,8 +103,9 @@ export default {
     flex-wrap: wrap;
     margin-left: 200px;
     margin-right: 200px;
-    margin-top: 80px;
+    margin-top: 40px;
     text-align: center;
+
 
   }
 </style>
