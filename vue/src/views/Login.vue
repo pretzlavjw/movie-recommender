@@ -2,7 +2,7 @@
   <div id="login" class="text-center styles">
     <div id="description">Don't know what to watch? We have you covered. 
       As you favorite movies you like and skip the ones you don't, this app will recommend movies for you to watch. 
-      If you find one that you haven't seen, add it to your list of favorites.</div>
+      If you find one that you haven't seen, add it to your watch later list.</div>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
@@ -81,7 +81,7 @@ export default {
 <style>
   @import '../resources/styles.css';
   .form-signin {
-    display: inline-flex;
+    display: flex;
     height: 100vh;
     flex-direction: column;
     height: 35rem;
@@ -89,9 +89,8 @@ export default {
     align-content: center;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-left: 50%;
-    background-color: silver;
-    justify-self: center
+    justify-self: center;
+    
   }
 
   #description {
@@ -101,6 +100,6 @@ export default {
     margin-right: 200px;
     margin-top: 80px;
     text-align: center;
-    background-color: silver;
+
   }
 </style>
