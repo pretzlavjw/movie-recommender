@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <table id="movieTable">
-         AWESOME SWEET
+         what
           </table>
     </div>
 </template>
@@ -14,7 +14,13 @@ export default {
          filter: {
              movieTitle: "",
              movieGenre: ""
+         },
+         movies: [ {
+             movieTitle: "ALEX",
+             movieGenre: "ACTION"
          }
+             
+         ]
 
      }
     }
