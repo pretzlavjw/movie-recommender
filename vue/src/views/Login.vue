@@ -108,4 +108,11 @@ export default {
 
 
   }
+  
+    #login {
+    background: white;
+    margin: 5% 30% 20px 30%;
+    border-radius: 15px 50px;
+    opacity: 80%;
+  }
 </style>
