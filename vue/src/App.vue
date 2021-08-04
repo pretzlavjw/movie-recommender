@@ -21,7 +21,7 @@
     flex-direction: column;
     align-items: center;
     border-radius: 15px 50px;
-    opacity: 90%;
+    opacity: 80%;
   }
 
   .title {
