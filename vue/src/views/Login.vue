@@ -105,6 +105,7 @@ export default {
     margin-right: 200px;
     margin-top: 40px;
     text-align: center;
+    font-size: 18pt;
 
 
   }
