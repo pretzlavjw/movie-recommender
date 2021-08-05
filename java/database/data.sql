@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS movies;
 
 CREATE TABLE movies (
         movie_id serial,
-        imbd_id varchar (20) not null,
+        imdb_id varchar (20) not null,
         movie_genre varchar (20) not null,
         movie_title varchar (20) not null,
         movie_description varchar (2000),

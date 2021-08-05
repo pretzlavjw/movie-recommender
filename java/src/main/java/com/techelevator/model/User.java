@@ -3,6 +3,7 @@ package com.techelevator.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,6 +16,13 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+   private String firstName;
+   private String lastName;
+   private String emailAddress;
+   private String phoneNumber;
+   private String SSN = "Don't give out your SSN to random TE students";
+   private List<String> favorites;
+   private List<String> watchlist;
 
    public User() { }
 
@@ -23,6 +31,46 @@ public class User {
       this.username = username;
       this.password = password;
       this.activated = true;
+   }
+
+   public String getFirstName() {
+      return firstName;
+   }
+
+   public void setFirstName(String firstName) {
+      this.firstName = firstName;
+   }
+
+   public String getLastName() {
+      return lastName;
+   }
+
+   public void setLastName(String lastName) {
+      this.lastName = lastName;
+   }
+
+   public String getEmailAddress() {
+      return emailAddress;
+   }
+
+   public void setEmailAddress(String emailAddress) {
+      this.emailAddress = emailAddress;
+   }
+
+   public String getPhoneNumber() {
+      return phoneNumber;
+   }
+
+   public void setPhoneNumber(String phoneNumber) {
+      this.phoneNumber = phoneNumber;
+   }
+
+   public String getSSN() {
+      return SSN;
+   }
+
+   public void setSSN(String SSN) {
+      this.SSN = SSN;
    }
 
    public Long getId() {
