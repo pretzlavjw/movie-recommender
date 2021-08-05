@@ -1,25 +1,7 @@
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS movies;
-DROP TABLE IF EXISTS genre;
-DROP TABLE IF EXISTS user_genre;
 DROP TABLE IF EXISTS movie_genre;
-
-
-
-CREATE TABLE users (
-        user_id serial,
-        username varchar (50) not null,
-        password_hash varchar (200) not null,
-        role varchar (50) not null,
-        first_name varchar (20),
-        last_name varchar (40),
-        email_address varchar (200),
-        phone_number varchar (20),
-        social_security_number varchar (10),
-        
-        constraint pk_userId primary key (user_id)
-);
-
+DROP TABLE IF EXISTS user_genre;
+DROP TABLE IF EXISTS genre;
+DROP TABLE IF EXISTS movies;
 
 
 CREATE TABLE movies (
@@ -40,7 +22,7 @@ CREATE TABLE genre (
         genre_id serial,
         genre_name varchar (20),
         
-        constraint pk_genres primary key (genre_id)
+        constraint pk_genre primary key (genre_id)
         
 
 );
@@ -60,7 +42,7 @@ CREATE TABLE movie_genre (
         
         constraint pk_movie_genre primary key (movie_id, genre_id),
         constraint fk_movie_id foreign key (movie_id) references genre (genre_id),
-        constraint fk_genre_id foreign key (genre_id) references users (user_id)
+        constraint fk_genre_id foreign key (genre_id) references movies (movie_id)
 );     
         
 
