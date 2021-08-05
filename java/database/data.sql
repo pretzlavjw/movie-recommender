@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS user_watchlist;
+DROP TABLE IF EXISTS user_movie;
 DROP TABLE IF EXISTS movie_genre;
 DROP TABLE IF EXISTS user_genre;
 DROP TABLE IF EXISTS genre;
@@ -24,7 +26,6 @@ CREATE TABLE genre (
         
         constraint pk_genre primary key (genre_id)
         
-
 );
 
 CREATE TABLE user_genre (
@@ -43,6 +44,17 @@ CREATE TABLE movie_genre (
         constraint pk_movie_genre primary key (movie_id, genre_id),
         constraint fk_movie_id foreign key (movie_id) references genre (genre_id),
         constraint fk_genre_id foreign key (genre_id) references movies (movie_id)
-);     
+);
+
+CREATE TABLE user_movie (
+        movie_id int not null,
+        user_id int not null,
+        user_preference_description varchar (10),
+        
+        constraint pk_user_movie primary key (movie_id, user_id),
+        constraint fk_movie_id foreign key (movie_id) references users (user_id),
+        constraint fk_user_id foreign key (user_id) references movies (movie_id)
+);
+
         
 
