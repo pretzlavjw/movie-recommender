@@ -20,6 +20,7 @@ CREATE TABLE users (
         email_address varchar (200),
         phone_number varchar (20),
         social_security_number varchar (10),
+
 	
 	
 	
