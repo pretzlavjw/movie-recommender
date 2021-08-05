@@ -3,6 +3,7 @@ package com.techelevator.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -20,6 +21,8 @@ public class User {
    private String emailAddress;
    private String phoneNumber;
    private String SSN = "Don't give out your SSN to random TE students";
+   private List<String> favorites;
+   private List<String> watchlist;
 
    public User() { }
 
