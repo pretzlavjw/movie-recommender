@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 
 import com.techelevator.model.Movie;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class MovieSqlDAO {
@@ -16,8 +18,22 @@ public class MovieSqlDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-//    @Override
-//    public
+    @Override
+    public List<Movie> getList() {
+        List<Movie> movies = new ArrayList<>();
+        String sql = "SELECT m.* " +
+                "FROM movies m " +
+                "JOIN user_movie um ON m.movie_ = um.movie_id " +
+                "JOIN user u ON um.user_id = u.user_id " +
+                "WHERE " +
+                "        u.user_id = ? AND  " +
+                "        um.user_preference_description = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql/*, id, moviePreference*/);
+        while (results.next()) {
+            movies.add(mapRowToMovie(results));
+        }
+        return movies;
+    }
 
     private Movie mapRowToMovie(SqlRowSet rs) {
         Movie movie = new Movie();
