@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.exceptions.UserNotFoundException;
 import com.techelevator.model.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ public class UserController {
         this.userDao = userDao;
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(path = "/add-movie", method = RequestMethod.POST)
     public boolean addMovie (@Valid @RequestBody String imdbId, String movieGenre, String movieTitle, String movieDescription, String movieImage, Date yearReleased, String rating, String movieLength, Principal principal) {
