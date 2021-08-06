@@ -18,6 +18,10 @@ public class Movie {
         this.imdbID = imdbID;
     }
 
+    public Movie() {
+
+    }
+
     public Long getId() {
         return id;
     }
