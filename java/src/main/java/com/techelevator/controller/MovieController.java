@@ -40,9 +40,13 @@ public class MovieController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/get-movie/{userId}", method = RequestMethod.GET)
-    public Movie getRecommendedMovie(@PathVariable Long userId) throws MovieNotFoundException {
-        Movie recommendedMovie = movieDAO.getMovie(userId);
-        if(recommendedMovie == null) throw new MovieNotFoundException();
+    public Movie getRecommendedMovie(@PathVariable Long userId){
+        Movie recommendedMovie = movieDAO.getRecommendedMovie(userId);
+        if(recommendedMovie == null) {
+            movieDAO.generateRecommendedMovieList(userId);
+            recommendedMovie = movieDAO.getRecommendedMovie(userId);
+            return  recommendedMovie;
+        }
         else return recommendedMovie;
     }
 
