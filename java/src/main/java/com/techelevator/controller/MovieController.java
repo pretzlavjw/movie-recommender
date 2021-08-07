@@ -32,8 +32,8 @@ public class MovieController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/watchlist/{userId}", method = RequestMethod.GET)
-    public List<Movie> getUserMovieWatchList(@PathVariable Long userId) throws MovieNotFoundException {
-        List<Movie> watchList = movieDAO.getUserMovieWatchList(userId);
+    public List<Movie> getWatchList(@PathVariable Long userId) throws MovieNotFoundException {
+        List<Movie> watchList = movieDAO.getWatchList(userId);
         if(watchList == null) throw new MovieNotFoundException();
         else return watchList;
     }
