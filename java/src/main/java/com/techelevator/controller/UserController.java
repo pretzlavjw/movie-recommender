@@ -22,13 +22,13 @@ public class UserController {
         this.userDao = userDao;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAnyRole('ADMIN')")
-    @RequestMapping(path = "/add-movie", method = RequestMethod.POST)
-    public boolean addMovie (@Valid @RequestBody String imdbId, String movieGenre, String movieTitle, String movieDescription, String movieImage, Date yearReleased, String rating, String movieLength, Principal principal) {
-        boolean addedMovie = userDao.addMovie(imdbId, movieGenre, movieTitle, movieDescription, movieImage, yearReleased, rating, movieLength);
-        return addedMovie;
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @PreAuthorize("hasAnyRole('ADMIN')")
+//    @RequestMapping(path = "/add-movie", method = RequestMethod.POST)
+//    public boolean addMovie (@Valid @RequestBody String imdbId, String movieGenre, String movieTitle, String movieDescription, String movieImage, Date yearReleased, String rating, String movieLength, Principal principal) {
+//        boolean addedMovie = userDao.addMovie(imdbId, movieGenre, movieTitle, movieDescription, movieImage, yearReleased, rating, movieLength);
+//        return addedMovie;
+//    }
 
     @RequestMapping(path = "/profile", method = RequestMethod.PUT)
     public boolean updateProfile (@RequestBody String firstName, String lastName, String emailAddress, String phoneNumber, String genreList, Principal principal) {
