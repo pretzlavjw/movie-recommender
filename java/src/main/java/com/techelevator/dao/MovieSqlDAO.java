@@ -55,26 +55,31 @@ public class MovieSqlDAO implements MovieDAO {
         return movies;
     }
 
-    public List<Movie> getRecommendedMovies(Long userId) {
+    public List<Movie> generateRecommendedMovieList(Long userId) {
 //        List<Movie> recommendedMovies = new ArrayList<>();
-        String sql = "SELECT m.*\n" +
-                "FROM movie_genre mg\n" +
-                "JOIN movies m ON mg.movie_id = m.movie_id\n" +
-                "JOIN user_movie um ON m.movie_id = um.movie_id\n" +
-                "JOIN users u ON um.user_id = u.user_id\n" +
-                "JOIN user_genre ug ON u.user_id = ug.user_id\n" +
-                "WHERE mg.genre_id = ug.genre_id AND user_id = ?\n" +
-                "\n" +
-                "EXCEPT\n" +
-                "\n" +
-                "SELECT *\n" +
-                "FROM user_movie\n" +
-                "WHERE user_id = ?;";
+        String sql = "SELECT m.* " +
+                "FROM movie_genre mg " +
+                "JOIN movies m ON mg.movie_id = m.movie_id " +
+                "JOIN user_movie um ON m.movie_id = um.movie_id " +
+                "JOIN users u ON um.user_id = u.user_id " +
+                "JOIN user_genre ug ON u.user_id = ug.user_id " +
+                "WHERE mg.genre_id = ug.genre_id AND user_id = ? " +
+                "AND m.movie_id NOT IN um.movie_id";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, userId);
         while (results.next()) {
             recommendedMovies.add(mapRowToMovie(results));
         }
+        Collections.shuffle(recommendedMovies);
         return recommendedMovies;
+    }
+
+    public Movie getRecommendedMovie(Long userID) {
+        if(!recommendedMovies.equals(null)) {
+            Movie movie = recommendedMovies.get(recommendedMovies.size() - 1);
+            recommendedMovies.remove(recommendedMovies.size() - 1);
+            return movie;
+        }
+        return null;
     }
 
     private Movie mapRowToMovie(SqlRowSet rs) {

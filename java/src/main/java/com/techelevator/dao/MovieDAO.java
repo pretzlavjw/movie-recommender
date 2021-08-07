@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface MovieDAO {
     List<Movie> getWatchList(Long userId);
+    Movie getRecommendedMovie(Long userID);
+    List<Movie> generateRecommendedMovieList(Long userId);
 
 }
