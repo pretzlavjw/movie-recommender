@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.techelevator.model.Movie;
 import com.techelevator.model.User;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -80,6 +81,51 @@ public class MovieSqlDAO implements MovieDAO {
             return movie;
         }
         return null;
+    }
+
+    public void addMovie(Movie newMovie) {
+        String sql = "INSERT INTO movies " +
+                "        (imdb_id, movie_title, movie_description, " +
+                "        movie_image, year_released, rating, movie_length) " +
+                "VALUES (?, ? ,?, ?, ?, ?, ?);";
+        Long newId = jdbcTemplate.queryForObject(sql, Long.class,
+                newMovie.getImdbID(),
+                newMovie.getTitle(),
+                newMovie.getPlot(),
+                newMovie.getPoster(),
+                newMovie.getYear(),
+                newMovie.getRated(),
+                newMovie.getRuntime());
+        newMovie.populateGenreList();
+        populateNewMovieGenres(newMovie.getGenre(), newId);
+    }
+
+//    public void populateNewMovieGenres(String[] genreArray, Long movieId) {
+//        String[] movieGenres = genreArray;
+//        for (String genre : movieGenres) {
+////            String sql = "SELECT * FROM genre WHERE genre_name = ?;";
+//            String checkGenre = "SELECT * FROM genre WHERE genre_name = ?;";
+//            SqlRowSet genres = jdbcTemplate.queryForRowSet(genre);
+//            if (genres.next())
+//                String sql = "INSERT INTO movie_genre (movie_id, genre_id) " +
+//                        "SELECT genre_id FROM genre WHERE genre_name = ? " +
+//                        "SELECT movie_id FROM movies WHERE movie_id = ?";
+//        }
+//    }
+
+    public void populateNewMovieGenres(String genres, Long movieId) {
+            String newGenres = "%" + genres + "%";
+            String checkGenre = "SELECT * FROM genre WHERE genre_name LIKE ?;";
+            SqlRowSet pippin = jdbcTemplate.queryForRowSet(checkGenre, newGenres);
+            while (pippin.next()) {
+                String genreName = "SELECT genre_id FROM genre WHERE genre_name = ?;";
+                SqlRowSet bernie = jdbcTemplate.queryForRowSet(genreName, pippin.getString("genre_name"));
+                Long newGenreId = bernie.getLong("genre_id");
+                String sql = "INSERT INTO movie_genre (movie_id, genre_id) " +
+                        "VALUES (?, ?);";
+                jdbcTemplate.update(sql, movieId, newGenreId);
+            }
+
     }
 
     private Movie mapRowToMovie(SqlRowSet rs) {
