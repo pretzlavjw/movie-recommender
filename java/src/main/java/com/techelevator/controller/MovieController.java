@@ -27,7 +27,7 @@ public class MovieController {
     @RequestMapping(path="/create/{imdbId}", method = RequestMethod.POST)
     public void addNewMovie(@PathVariable String imdbId) throws MovieNotFoundException {
         Movie newMovie = restMovieService.getMovie(imdbId);
-
+        movieDAO.addMovie(newMovie);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -49,5 +49,6 @@ public class MovieController {
         }
         else return recommendedMovie;
     }
+    
 
 }
