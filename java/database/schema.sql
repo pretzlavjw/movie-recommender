@@ -37,16 +37,25 @@ CREATE TABLE users (
 CREATE TABLE movies (
         movie_id serial,
         imdb_id varchar (20) not null,
-        movie_genre varchar (20) not null,
-        movie_title varchar (20) not null,
+        movie_genre varchar (50) not null,
+        movie_title varchar (50) not null,
         movie_description varchar (2000),
         movie_image varchar (1000),
-        year_released date not null,
+        year_released varchar(10),
         rating varchar (10),
         movie_length varchar (50),
  
         constraint pk_movie_id primary key (movie_id)
 );
+   
+--ALTER TABLE movies
+--ALTER COLUMN year_released TYPE varchar(10);
+
+--ALTER TABLE movies
+--ALTER COLUMN movie_genre TYPE varchar(50);
+
+--ALTER TABLE movies
+--ALTER COLUMN movie_title TYPE varchar(50);
    
 CREATE TABLE genre (
         genre_id serial,
