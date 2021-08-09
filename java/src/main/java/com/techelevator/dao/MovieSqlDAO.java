@@ -42,7 +42,7 @@ public class MovieSqlDAO implements MovieDAO {
     @Override
     public List<Movie> getWatchList(Long userId) {
         List<Movie> movies = new ArrayList<>();
-        String sql = "SELECT m.* " +
+        String sql = "SELECT m.imdb_id, m.movie_genre, m.movie_title, m.movie_description, m.movie_image, m.year_released, m.rating, m.movie_length " +
                 "FROM movies m " +
                 "JOIN user_movie um ON m.movie_id = um.movie_id " +
                 "JOIN user u ON um.user_id = u.user_id " +
@@ -72,14 +72,24 @@ public class MovieSqlDAO implements MovieDAO {
     public List<Movie> generateRecommendedMovieList(Long userId) {
 //        List<Movie> recommendedMovies = new ArrayList<>();
         String sql = "SELECT m.imdb_id, m.movie_genre, m.movie_title, m.movie_description, m.movie_image, m.year_released, m.rating, m.movie_length " +
-                "FROM movie_genre mg " +
-                "JOIN movies m ON mg.movie_id = m.movie_id " +
-                "JOIN user_movie um ON m.movie_id = um.movie_id " +
-                "JOIN users u ON um.user_id = u.user_id " +
-                "JOIN user_genre ug ON u.user_id = ug.user_id " +
-                "WHERE mg.genre_id = ug.genre_id AND user_id = ? " +
-                "AND m.movie_id NOT IN um.movie_id";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, userId);
+                "FROM movies m " +
+                "JOIN movie_genre mg ON m.movie_id = mg.movie_id " +
+                "JOIN genre g ON mg.genre_id = g.genre_id " +
+                "JOIN user_genre ug ON g.genre_id = ug.genre_id " +
+                "WHERE ug.user_id = ?";
+
+
+
+
+//                "SELECT m.imdb_id, m.movie_genre, m.movie_title, m.movie_description, m.movie_image, m.year_released, m.rating, m.movie_length " +
+//                "FROM movie_genre mg " +
+//                "JOIN movies m ON mg.movie_id = m.movie_id " +
+//                "JOIN user_movie um ON m.movie_id = um.movie_id " +
+//                "JOIN users u ON um.user_id = u.user_id " +
+//                "JOIN user_genre ug ON u.user_id = ug.user_id " +
+//                "WHERE mg.genre_id = ug.genre_id AND ug.user_id = ?;";
+//                "AND m.movie_id NOT IN (SELECT .movie_id FROM user_movie)";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
             recommendedMovies.add(mapRowToMovie(results));
         }
