@@ -1,7 +1,6 @@
 <template>
 
   <div class="movie-card">
-      <movie-list></movie-list>
       <h3 class="movie-title">Movie Title</h3>
       <img v-bind:src="url">
       <h4 class="movie-plot">Description</h4>
@@ -15,10 +14,8 @@
 
 <script>
 import MovieService from "@/services/MovieService.js";
-import MovieList from "@/components/MovieList.vue"
 
 export default {
-  components: { MovieList },
     name: 'movie-list',
     methods: {
         getMovies(userId) {
