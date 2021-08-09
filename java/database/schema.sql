@@ -70,8 +70,8 @@ CREATE TABLE user_genre (
         genre_id int not null,
         
         constraint pk_user_genre primary key (user_id, genre_id),
-        constraint fk_user_id foreign key (user_id) references genre (genre_id),
-        constraint fk_genre_id foreign key (genre_id) references users (user_id)
+        constraint fk_user_id foreign key (user_id) references users (user_id),
+        constraint fk_genre_id foreign key (genre_id) references genre (genre_id)
 );
 
 CREATE TABLE movie_genre (
@@ -79,8 +79,8 @@ CREATE TABLE movie_genre (
         genre_id int not null,
         
         constraint pk_movie_genre primary key (movie_id, genre_id),
-        constraint fk_movie_id foreign key (movie_id) references genre (genre_id),
-        constraint fk_genre_id foreign key (genre_id) references movies (movie_id)
+        constraint fk_movie_id foreign key (movie_id) references movies (movie_id),
+        constraint fk_genre_id foreign key (genre_id) references genre (genre_id)
 );
 
 CREATE TABLE user_movie (
@@ -89,8 +89,8 @@ CREATE TABLE user_movie (
         user_preference_description varchar (10),
         
         constraint pk_user_movie primary key (movie_id, user_id),
-        constraint fk_movie_id foreign key (movie_id) references users (user_id),
-        constraint fk_user_id foreign key (user_id) references movies (movie_id)
+        constraint fk_movie_id foreign key (movie_id) references movies (movie_id),
+        constraint fk_user_id foreign key (user_id) references users (user_id)
 );
 
 CREATE TABLE user_profile (
