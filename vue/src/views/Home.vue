@@ -7,8 +7,9 @@
 </template>
 
 <script>
-
 import MovieCard from "@/components/Home/MovieCard.vue";
+import Buttons from "@/components/Home/Buttons.vue";
+
 export default {
   name: "home",
   components: {

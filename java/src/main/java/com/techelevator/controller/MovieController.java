@@ -42,6 +42,7 @@ public class MovieController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/get-movie/{userId}", method = RequestMethod.GET)
     public Movie getRecommendedMovie(@PathVariable Long userId){
+        movieDAO.generateRecommendedMovieList(userId);
         Movie recommendedMovie = movieDAO.getRecommendedMovie(userId);
         if(recommendedMovie == null) {
             movieDAO.generateRecommendedMovieList(userId);

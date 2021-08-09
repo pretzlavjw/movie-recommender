@@ -71,7 +71,7 @@ public class MovieSqlDAO implements MovieDAO {
 
     public List<Movie> generateRecommendedMovieList(Long userId) {
 //        List<Movie> recommendedMovies = new ArrayList<>();
-        String sql = "SELECT m.* " +
+        String sql = "SELECT m.imdb_id, m.movie_genre, m.movie_title, m.movie_description, m.movie_image, m.year_released, m.rating, m.movie_length " +
                 "FROM movie_genre mg " +
                 "JOIN movies m ON mg.movie_id = m.movie_id " +
                 "JOIN user_movie um ON m.movie_id = um.movie_id " +
@@ -88,7 +88,7 @@ public class MovieSqlDAO implements MovieDAO {
     }
 
     public Movie getRecommendedMovie(Long userID) {
-        if(!recommendedMovies.equals(null)) {
+        if(recommendedMovies.size() != 0) {
             Movie movie = recommendedMovies.get(recommendedMovies.size() - 1);
             recommendedMovies.remove(recommendedMovies.size() - 1);
             return movie;
