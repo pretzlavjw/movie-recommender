@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <movie-card />
+    <buttons/>
     <h1>Home</h1>
     <p>Movie title goes here?</p>
   </div>
@@ -13,7 +14,8 @@ import Buttons from "@/components/Home/Buttons.vue";
 export default {
   name: "home",
   components: {
-    MovieCard
+    MovieCard,
+    Buttons
   }
 };
 </script>
