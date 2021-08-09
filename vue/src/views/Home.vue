@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <movie-list></movie-list>
+    <movie-card />
     <h1>Home</h1>
     <p>Movie title goes here?</p>
   </div>
@@ -8,11 +8,11 @@
 
 <script>
 
-import MovieList from "@/components/MovieList.vue";
+import MovieCard from "@/components/Home/MovieCard.vue";
 export default {
   name: "home",
   components: {
-    MovieList
+    MovieCard
   }
 };
 </script>

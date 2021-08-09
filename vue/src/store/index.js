@@ -37,6 +37,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    SET_MOVIE(state, data) {
+      state.movies = data;
     }
   }
 })
