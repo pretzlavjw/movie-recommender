@@ -16,8 +16,6 @@ VALUES ('tt0093779', 'Adventure, Family, Fantasy', 'The Princess Bride', 'While 
         ),
         ('tt0034583', 'Drama, Romance, War', 'Casablanca', 'A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.', 'https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_SX300.jpg', '1942', 'PG', '102 min'
         ),
-       -- ('tt0071230', 'Comedy, Western', 'Blazing Saddles', 'In order to ruin a western town, a corrupt politician appoints a black Sheriff, who promptly becomes his most formidable adversary.', '1974', 'R', '93 min'
-        --),
         ('tt0076759', 'Action, Adventure, Fantasy', 'Star Wars', 'Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire''s world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vad', 'https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg', '1977', 'PG', '121 min'
         ),
         ('tt0062622','Adventure, Sci-Fi','2001: A Space Odyssey', 'After discovering a mysterious artifact buried beneath the Lunar surface, mankind sets off on a quest to find its origins with help from intelligent supercomputer H.A.L. 9000.', 'https://m.media-amazon.com/images/M/MV5BMmNlYzRiNDctZWNhMi00MzI4LThkZTctMTUzMmZkMmFmNThmXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg', '1970', 'G', '149 min'
@@ -39,6 +37,47 @@ VALUES ('tt0093779', 'Adventure, Family, Fantasy', 'The Princess Bride', 'While 
         ('tt2494362', 'Drama, Horror, Western', 'Bone Tomahawk', 'In the dying days of the old west, an elderly sheriff and his posse set out to rescue their town''s doctor from cannibalistic cave dwellers.', 'https://m.media-amazon.com/images/M/MV5BMzQ0MzE4OTUzMF5BMl5BanBnXkFtZTgwODAyNzI3NjE@._V1_SX300.jpg', '2016', 'Not Rated', '132 min'
         ),
         ('tt1403865', 'Drama, Western', 'True Grit', 'A stubborn teenager enlists the help of a tough U.S. Marshal to track down her father''s murderer.', 'https://m.media-amazon.com/images/M/MV5BODhkZDIzNjgtOTA5ZS00MmMzLWFkNjYtM2Y2MzFjN2FkNjAzL2ltYWdlXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg', '2010', 'PG-13', '110 min'
+        ),
+        ('tt0071230', 'Comedy, Western', 'Blazing Saddles', 'In order to ruin a western town, a corrupt politician appoints a black Sheriff, who promptly becomes his most formidable adversary.', 'https://m.media-amazon.com/images/M/MV5BZGZmMWE1MDYtNzAyNC00MDMzLTgzZjQtNTQ5NjYzN2E4MzkzXkEyXkFqcGdeQXVyNDk3NzU2MTQ@._V1_SX300.jpg', '1974', 'R', '93 min'
         );
+
+INSERT INTO movie_genre (movie_id, genre_id)
+VALUES 
+        (1, 7),
+        (2, 3),
+        (2, 4),
+        (3, 1),
+        (3, 10),
+        (4, 1),
+        (4, 10),
+        (5, 3),
+        (5, 7),
+        (6, 5),
+        (7, 5),
+        (7, 6),
+        (8, 1),
+        (8, 7),
+        (9, 10),
+        (10, 3),
+        (11, 2),
+        (11, 10),
+        (12, 2),
+        (12, 4),
+        (12, 8),
+        (13, 1),
+        (14, 1),
+        (14, 5),
+        (15, 1),
+        (15, 10),
+        (16, 1),
+        (16, 10),
+        (17, 5),
+        (17, 2),
+        (17, 9),
+        (18, 5),
+        (18, 9),
+        (19, 3),
+        (19, 9);
+         
         
         
