@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.MovieDAO;
 import com.techelevator.exceptions.MovieNotFoundException;
 import com.techelevator.model.Movie;
+import com.techelevator.services.MovieService;
 import com.techelevator.services.RESTMovieService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,7 +16,7 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 public class MovieController {
 
-    private RESTMovieService restMovieService;
+    private RESTMovieService restMovieService = new RESTMovieService();
     private MovieDAO movieDAO;
 
     public MovieController (MovieDAO movieDAO) {
@@ -25,7 +26,7 @@ public class MovieController {
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path="/create/{imdbId}", method = RequestMethod.POST)
-    public void addNewMovie(@PathVariable String imdbId) throws MovieNotFoundException {
+    public void addNewMovie(@PathVariable String imdbId) {
         Movie newMovie = restMovieService.getMovie(imdbId);
         movieDAO.addMovie(newMovie);
     }

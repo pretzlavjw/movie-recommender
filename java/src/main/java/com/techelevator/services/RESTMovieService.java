@@ -11,9 +11,10 @@ public class RESTMovieService implements MovieService {
     @Override
     public Movie getMovie(String imdbId) {
         Movie newMovie = null;
+        String url = "http://www.omdbapi.com/?i=" + imdbId + "&apikey=65bfb6b8";
         try {
-            newMovie = restTemplate.getForObject("http://www.omdbapi.com/?apikey=" + imdbId + "&", Movie.class);
-            newMovie.populateGenreList();
+            newMovie = restTemplate.getForObject(url, Movie.class);
+//            newMovie.populateGenreList();
         } catch (RestClientResponseException ex) {
             System.err.println("No movie found. Please try again.");
         } catch (ResourceAccessException ex) {

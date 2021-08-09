@@ -13,13 +13,13 @@ public class Movie {
     private String rated;
     private String runtime;
     private String genre;
-    private String[] genreTypes;
+//    private String[] genreTypes;
 
     public Movie() {}
 
-    public void populateGenreList() {
-        genreTypes = genre.split(", ");
-    }
+//    public void populateGenreList() {
+//        genreTypes = genre.split(", ");
+//    }
 
     public Long getMovieId() {
         return movieId;
@@ -93,11 +93,11 @@ public class Movie {
         this.genre = genre;
     }
 
-    public String[] getGenreTypes() {
-        return genreTypes;
-    }
+//    public String[] getGenreTypes() {
+//        return genreTypes;
+//    }
 
-    public void setGenreTypes(String[] genreTypes) {
-        this.genreTypes = genreTypes;
-    }
+//    public void setGenreTypes(String[] genreTypes) {
+//        this.genreTypes = genreTypes;
+//    }
 }
