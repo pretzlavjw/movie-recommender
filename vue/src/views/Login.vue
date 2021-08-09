@@ -101,13 +101,9 @@ export default {
   #description {
     display: inline-flex;
     flex-wrap: wrap;
-    margin-left: 200px;
-    margin-right: 200px;
     margin-top: 40px;
     text-align: center;
     font-size: 18pt;
-
-
   }
   
     #login {

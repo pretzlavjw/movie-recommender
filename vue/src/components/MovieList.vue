@@ -7,6 +7,8 @@
 </template>
 
 <script>
+
+
 export default {
     name: "movie-list",
     data() {

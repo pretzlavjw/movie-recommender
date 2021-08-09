@@ -30,15 +30,15 @@ public class UserController {
 //        return addedMovie;
 //    }
 
-    @RequestMapping(path = "/profile", method = RequestMethod.PUT)
-    public boolean updateProfile (@RequestBody String firstName, String lastName, String emailAddress, String phoneNumber, String genreList, Principal principal) {
-        boolean updatedProfile = userDao.updateProfile(firstName, lastName, emailAddress, phoneNumber, genreList, userDao.findByUsername(principal.getName()));
-        return updatedProfile;
-   }
-
-   @RequestMapping (path = "update-status/{user-preference}", method = RequestMethod.PUT)
-    public boolean updateStatus (@PathVariable int preferenceId, String imdbId, Principal principal) {
-        boolean updatedStatus = userDao.updateStatus(preferenceId, imdbId, userDao.findByUsername(principal.getName()));
-        return updatedStatus;
-   }
+//    @RequestMapping(path = "/profile", method = RequestMethod.PUT)
+//    public boolean updateProfile (@RequestBody String firstName, String lastName, String emailAddress, String phoneNumber, String genreList, Principal principal) {
+//        boolean updatedProfile = userDao.updateProfile(firstName, lastName, emailAddress, phoneNumber, genreList, userDao.findByUsername(principal.getName()));
+//        return updatedProfile;
+//   }
+//
+//   @RequestMapping (path = "update-status/{user-preference}", method = RequestMethod.PUT)
+//    public boolean updateStatus (@PathVariable int preferenceId, String imdbId, Principal principal) {
+//        boolean updatedStatus = userDao.updateStatus(preferenceId, imdbId, userDao.findByUsername(principal.getName()));
+//        return updatedStatus;
+//   }
 }

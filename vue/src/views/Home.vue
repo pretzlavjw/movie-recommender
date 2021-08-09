@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <movie-list></movie-list>
+    <movie-card></movie-card>
+    <buttons></buttons>
     <h1>Home</h1>
     <p>Movie title goes here?</p>
   </div>
 </template>
 
 <script>
+import MovieCard from "@/components/Home/MovieCard.vue";
+import Buttons from "@/components/Home/Buttons.vue";
 
-import MovieList from "@/components/MovieList.vue";
 export default {
   name: "home",
   components: {
-    MovieList
+    MovieCard,
+    Buttons
   }
 };
 </script>
