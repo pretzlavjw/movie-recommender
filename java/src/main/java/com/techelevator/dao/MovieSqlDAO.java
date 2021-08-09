@@ -56,6 +56,19 @@ public class MovieSqlDAO implements MovieDAO {
         return movies;
     }
 
+    public void saveMoviePreference(Long userId, Long movieId, String preference) {
+        String sql = "SELECT user_id, movie_id FROM user_movie WHERE user_id = ? AND movie_id = ?;";
+        SqlRowSet check = jdbcTemplate.queryForRowSet(sql, userId, movieId);
+        if(check.next()) {
+            String sqlUpdate = "UPDATE user_movie SET user_preference_description = ? WHERE user_id = ? AND movie_id = ?;";
+            jdbcTemplate.update(sqlUpdate, preference, userId, movieId);
+        } else {
+            String sqlInsert = "INSERT INTO user_movie (user_id, movie_id, user_preference_description) " +
+                    "VALUES (?, ?, ?);";
+            jdbcTemplate.update(sqlInsert, userId, movieId, preference);
+        }
+    }
+
     public List<Movie> generateRecommendedMovieList(Long userId) {
 //        List<Movie> recommendedMovies = new ArrayList<>();
         String sql = "SELECT m.* " +
@@ -96,7 +109,7 @@ public class MovieSqlDAO implements MovieDAO {
                 newMovie.getYear(),
                 newMovie.getRated(),
                 newMovie.getRuntime());
-        newMovie.populateGenreList();
+//        newMovie.populateGenreList();
         populateNewMovieGenres(newMovie.getGenre(), newId);
     }
 
