@@ -108,8 +108,8 @@ public class MovieSqlDAO implements MovieDAO {
 
     public void addMovie(Movie newMovie) {
         String sql = "INSERT INTO movies " +
-                "        (imdb_id, movie_title, movie_genre, movie_description, " +
-                "        movie_image, year_released, rating, movie_length) " +
+                "(imdb_id, movie_title, movie_genre, movie_description, " +
+                "movie_image, year_released, rating, movie_length) " +
                 "VALUES (?, ? ,?, ?, ?, ?, ?, ?) RETURNING movie_id;";
         Long newId = jdbcTemplate.queryForObject(sql, Long.class,
                 newMovie.getImdbID(),
@@ -150,6 +150,14 @@ public class MovieSqlDAO implements MovieDAO {
                 jdbcTemplate.update(sql, movieId, newGenreId);
             }
 
+    }
+
+    //Still needs debugged. Passing in (null, userId, null)
+    public void updateUserPreferenceStatus(Long userId, String preferenceId, Long movieId) {
+        String sql = "INSERT INTO user_movie " +
+                "(movie_id, user_id, user_preference_description) " +
+                "VALUES (?, ? ,?);";
+        jdbcTemplate.queryForRowSet(sql, movieId, userId, preferenceId);
     }
 
     private Movie mapRowToMovie(SqlRowSet rs) {
