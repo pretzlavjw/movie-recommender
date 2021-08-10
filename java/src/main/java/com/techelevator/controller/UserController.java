@@ -12,6 +12,7 @@ import java.security.Principal;
 import java.util.Date;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/users")
 @PreAuthorize("isAuthenticated()")
 public class UserController {
