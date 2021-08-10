@@ -3,6 +3,7 @@
   <div class="movie-card">
       <div>
            <h3 class="movie-title">{{ movie.title }}</h3>
+           <h4>{{ movie.poster }}</h4>
       </div>
      
        
@@ -23,6 +24,7 @@ export default {
     name: 'movie-card',
     methods: {
         getMovies() {
+            console.log(this.$store.state.user.id)
             MovieService.get(this.$store.state.user.id).then(response => {
                 this.$store.commit("SET_MOVIE", response.data)
             })
