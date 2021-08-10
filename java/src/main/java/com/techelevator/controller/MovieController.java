@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -30,6 +31,13 @@ public class MovieController {
     public void addNewMovie(@PathVariable String imdbId) {
         Movie newMovie = restMovieService.getMovie(imdbId);
         movieDAO.addMovie(newMovie);
+    }
+
+    //Still needs to be debugged. Passing in (null, userId, null)
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping (path = "update-status/{userId}/{user-preference}", method = RequestMethod.POST)
+    public void updateStatus (@PathVariable Long userId, String preferenceId, Long movieId) {
+        movieDAO.updateUserPreferenceStatus(userId, preferenceId, movieId);
     }
 
     @ResponseStatus(HttpStatus.OK)

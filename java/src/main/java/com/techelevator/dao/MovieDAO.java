@@ -9,5 +9,6 @@ public interface MovieDAO {
     Movie getRecommendedMovie(Long userID);
     List<Movie> generateRecommendedMovieList(Long userId);
     void addMovie(Movie newMovie);
+    void updateUserPreferenceStatus(Long userId, String preferenceId, Long movieId);
 
 }
