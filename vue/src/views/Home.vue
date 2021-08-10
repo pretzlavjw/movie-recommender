@@ -1,9 +1,7 @@
 <template>
   <div class="home">
-    <movie-card />
+    <movie-card/>
     <buttons/>
-    <h1>Home</h1>
-    <p>Movie title goes here?</p>
   </div>
 </template>
 
