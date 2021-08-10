@@ -18,7 +18,7 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
-    movies: [],
+    //movies: [],
     token: currentToken || '',
     user: currentUser || {},
     movie: {
