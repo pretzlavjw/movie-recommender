@@ -108,12 +108,13 @@ public class MovieSqlDAO implements MovieDAO {
 
     public void addMovie(Movie newMovie) {
         String sql = "INSERT INTO movies " +
-                "        (imdb_id, movie_title, movie_description, " +
+                "        (imdb_id, movie_title, movie_genre, movie_description, " +
                 "        movie_image, year_released, rating, movie_length) " +
-                "VALUES (?, ? ,?, ?, ?, ?, ?);";
+                "VALUES (?, ? ,?, ?, ?, ?, ?, ?) RETURNING movie_id;";
         Long newId = jdbcTemplate.queryForObject(sql, Long.class,
                 newMovie.getImdbID(),
                 newMovie.getTitle(),
+                newMovie.getGenre(),
                 newMovie.getPlot(),
                 newMovie.getPoster(),
                 newMovie.getYear(),
