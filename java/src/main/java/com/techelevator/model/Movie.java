@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class Movie {
         return title;
     }
 
+    @JsonProperty("Title")
     public void setTitle(String title) {
         this.title = title;
     }
@@ -49,6 +52,7 @@ public class Movie {
         return plot;
     }
 
+    @JsonProperty("Plot")
     public void setPlot(String plot) {
         this.plot = plot;
     }
@@ -57,6 +61,7 @@ public class Movie {
         return poster;
     }
 
+    @JsonProperty("Poster")
     public void setPoster(String poster) {
         this.poster = poster;
     }
@@ -65,6 +70,7 @@ public class Movie {
         return year;
     }
 
+    @JsonProperty("Year")
     public void setYear(String year) {
         this.year = year;
     }
@@ -73,6 +79,7 @@ public class Movie {
         return rated;
     }
 
+    @JsonProperty("Rated")
     public void setRated(String rated) {
         this.rated = rated;
     }
@@ -81,6 +88,7 @@ public class Movie {
         return runtime;
     }
 
+    @JsonProperty("Runtime")
     public void setRuntime(String runtime) {
         this.runtime = runtime;
     }
@@ -89,6 +97,7 @@ public class Movie {
         return genre;
     }
 
+    @JsonProperty("Genre")
     public void setGenre(String genre) {
         this.genre = genre;
     }
