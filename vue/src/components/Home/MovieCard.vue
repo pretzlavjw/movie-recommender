@@ -2,8 +2,15 @@
 
   <div class="movie-card">
       <div>
-           <h3 class="movie-title">{{ movie.title }}</h3>
-           <h4>{{ movie.poster }}</h4>
+           <h3 class="movie-title">{{ movie.Title }}</h3>
+           
+               <img v-bind:src="movie.Poster" alt="">
+                <p> {{ movie.Poster}} </p>
+     
+           
+
+
+           <h5> {{ movie.Plot }} </h5>
       </div>
      
        
