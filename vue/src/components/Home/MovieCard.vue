@@ -5,7 +5,6 @@
            <h3 class="movie-title">{{ movie.Title }}</h3>
            
                <img v-bind:src="movie.Poster" alt="">
-                <p> {{ movie.Poster}} </p>
      
            
 
