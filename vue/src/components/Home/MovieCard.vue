@@ -65,7 +65,6 @@ export default {
     border-radius: 15px 50px;
     opacity: 80%;
     width: 500px;
-    margin: 0 auto;
     text-align: center;
 }
 

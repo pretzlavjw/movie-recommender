@@ -1,5 +1,5 @@
 <template>
-    <button id="like" class="btn btn-primary" v-on:click="getMovies">Like</button>
+    <button id="like" class="btn btn-primary" v-on:click="addFavorite(); getMovies();" >Like</button>
 </template>
 
 <script>
@@ -16,7 +16,15 @@ export default {
   // },
   name: 'movie-card',
     methods: {
-        updateProfile() {},
+        addFavorite() {
+            const newFavorite = {
+                id: this.$store.state.user.id,
+                movieId: this.$store.state.movie.movieId,
+                userPreference: "favorite"
+            }
+            MovieService.create(newFavorite)
+            
+        },
         getMovies() {
             console.log(this.$store.state.user.id)
             MovieService.get(this.$store.state.user.id).then(response => {
