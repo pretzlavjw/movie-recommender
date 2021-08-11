@@ -43,7 +43,7 @@ export default {
 
 <style>
 #like {
-  background-color: #4CAF50;
+  background-color: #7f34b1;
   border: none;
   color: white;
   padding: 16px;
@@ -55,7 +55,7 @@ export default {
 }
 
 #like:hover {
-  background-color: #217924;
+  background-color: #49136d;
   color: white;
 }
 </style>
