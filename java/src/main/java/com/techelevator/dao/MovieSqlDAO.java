@@ -98,6 +98,7 @@ public class MovieSqlDAO implements MovieDAO {
     }
 
     public Movie getRecommendedMovie(Long userID) {
+        generateRecommendedMovieList(userID);
         if(recommendedMovies.size() != 0) {
             Movie movie = recommendedMovies.get(recommendedMovies.size() - 1);
             recommendedMovies.remove(recommendedMovies.size() - 1);
@@ -120,8 +121,8 @@ public class MovieSqlDAO implements MovieDAO {
                 newMovie.getYear(),
                 newMovie.getRated(),
                 newMovie.getRuntime());
-//        newMovie.populateGenreList();
-        populateNewMovieGenres(newMovie.getGenre(), newId);
+        newMovie.populateGenreList();
+        populateNewMovieGenres(newMovie.getGenreTypes(), newId);
     }
 
 //    public void populateNewMovieGenres(String[] genreArray, Long movieId) {
@@ -137,18 +138,28 @@ public class MovieSqlDAO implements MovieDAO {
 //        }
 //    }
 
-    public void populateNewMovieGenres(String genres, Long movieId) {
-            String newGenres = "%" + genres + "%";
-            String checkGenre = "SELECT * FROM genre WHERE genre_name LIKE ?;";
-            SqlRowSet pippin = jdbcTemplate.queryForRowSet(checkGenre, newGenres);
-            while (pippin.next()) {
-                String genreName = "SELECT genre_id FROM genre WHERE genre_name = ?;";
-                SqlRowSet bernie = jdbcTemplate.queryForRowSet(genreName, pippin.getString("genre_name"));
-                Long newGenreId = bernie.getLong("genre_id");
+    public void populateNewMovieGenres(String[] genres, Long movieId) {
+//            String newGenres = "%" + genres + "%";
+//            String checkGenre = "SELECT genre_id, genre_name FROM genre WHERE genre_name = ?;";
+//            SqlRowSet pippin = jdbcTemplate.queryForRowSet(checkGenre, genres);
+//            while (pippin.next()) {
+//                String genreName = "SELECT genre_id FROM genre WHERE genre_name = ?;";
+//                SqlRowSet bernie = jdbcTemplate.queryForRowSet(genreName, pippin.getString("genre_name"));
+//                Long newGenreId = bernie.getLong("genre_id");
+//                String sql = "INSERT INTO movie_genre (movie_id, genre_id) " +
+//                        "VALUES (?, ?);";
+//                jdbcTemplate.update(sql, movieId, newGenreId);
+//            }
+        for(String genre : genres) {
+            String genreName = "SELECT genre_id FROM genre WHERE genre_name = ?;";
+            SqlRowSet results = jdbcTemplate.queryForRowSet(genreName, genre);
+            if(results.next()) {
+                Long genreId = results.getLong("genre_id");
                 String sql = "INSERT INTO movie_genre (movie_id, genre_id) " +
                         "VALUES (?, ?);";
-                jdbcTemplate.update(sql, movieId, newGenreId);
+                jdbcTemplate.update(sql, movieId, genreId);
             }
+        }
 
     }
 
