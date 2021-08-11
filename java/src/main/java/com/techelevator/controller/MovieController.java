@@ -31,6 +31,7 @@ public class MovieController {
     public void addNewMovie(@PathVariable String imdbId) {
         Movie newMovie = restMovieService.getMovie(imdbId);
         movieDAO.addMovie(newMovie);
+
     }
 
     //Still needs to be debugged. Passing in (null, userId, null)
@@ -52,12 +53,7 @@ public class MovieController {
     @RequestMapping(path = "/get-movie/{userId}", method = RequestMethod.GET)
     public Movie getRecommendedMovie(@PathVariable Long userId){
         Movie recommendedMovie = movieDAO.getRecommendedMovie(userId);
-        if(recommendedMovie == null) {
-            movieDAO.generateRecommendedMovieList(userId);
-            recommendedMovie = movieDAO.getRecommendedMovie(userId);
-            return  recommendedMovie;
-        }
-        else return recommendedMovie;
+        return  recommendedMovie;
     }
     
 
