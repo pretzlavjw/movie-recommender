@@ -6,23 +6,15 @@
 import MovieService from "@/services/MovieService.js"
 
 export default {
-  // name: "LikeButton",
-  // methods: {
-  //   LikeMovie() {
-  //     //this.$router.push('/login');
-  //     //window.location.reload()
-  //   },
-    
-  // },
-  name: 'movie-card',
+  name: 'LikeButton',
     methods: {
         addFavorite() {
-            const newFavorite = {
+            const setUserPreference = {
                 id: this.$store.state.user.id,
                 movieId: this.$store.state.movie.movieId,
-                userPreference: "favorite"
+                userPreference: "favorited"
             }
-            MovieService.create(newFavorite)
+            MovieService.create(setUserPreference)
             
         },
         getMovies() {
