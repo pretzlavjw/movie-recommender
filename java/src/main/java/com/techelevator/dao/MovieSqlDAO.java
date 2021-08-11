@@ -154,10 +154,23 @@ public class MovieSqlDAO implements MovieDAO {
 
     //Still needs debugged. Passing in (null, userId, null)
     public void updateUserPreferenceStatus(Long userId, Long movieId, String userPreference) {
-        String sql = "INSERT INTO user_movie " +
-                "(movie_id, user_id, user_preference_description) " +
-                "VALUES (?, ? ,?);";
-        jdbcTemplate.queryForRowSet(sql, movieId, userId, userPreference);
+        String sql = "";
+        String sqlCheck = "SELECT movie_id, user_id, user_preference_description " +
+                "FROM user_movie " +
+                "WHERE movie_id = ? AND user_id = ?;" ;
+        SqlRowSet checkIfExists = jdbcTemplate.queryForRowSet(sqlCheck, movieId, userId);
+            if (checkIfExists.next()) {
+                sql = "UPDATE user_movie " +
+                        "SET movie_id = ?, user_id = ?, user_preference_description = ? " +
+                        "WHERE movie_id = ? AND user_id = ?;" ;
+                jdbcTemplate.update(sql, movieId, userId, userPreference, movieId, userId);
+            } else {
+                sql = "INSERT INTO user_movie " +
+                        "(movie_id, user_id, user_preference_description) " +
+                        "VALUES (?, ? ,?);";
+                jdbcTemplate.update(sql, movieId, userId, userPreference);
+            }
+
     }
 
     private Movie mapRowToMovie(SqlRowSet rs) {
