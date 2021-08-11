@@ -16,12 +16,14 @@ export default {
   // },
   name: 'movie-card',
     methods: {
+        updateProfile() {},
         getMovies() {
             console.log(this.$store.state.user.id)
             MovieService.get(this.$store.state.user.id).then(response => {
                 this.$store.commit("SET_MOVIE", response.data)
             })
         }
+        
     },
     data() {
         return {movies: []}
