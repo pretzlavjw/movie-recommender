@@ -1,7 +1,5 @@
 <template>
-  <div class="like-container">
     <button id="like" class="btn btn-primary" v-on:click="getMovies">Like</button>
-  </div>
 </template>
 
 <script>
@@ -42,7 +40,20 @@ export default {
 </script>
 
 <style>
-div.like-container {
-  display: inline-block;
+#like {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 8px;
+  width: 165px;
+  transition-duration: 0.4s;
+}
+
+#like:hover {
+  background-color: #217924;
+  color: white;
 }
 </style>
