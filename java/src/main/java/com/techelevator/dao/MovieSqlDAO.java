@@ -153,11 +153,11 @@ public class MovieSqlDAO implements MovieDAO {
     }
 
     //Still needs debugged. Passing in (null, userId, null)
-    public void updateUserPreferenceStatus(Long userId, String preferenceId, Long movieId) {
+    public void updateUserPreferenceStatus(Long userId, Long movieId, String userPreference) {
         String sql = "INSERT INTO user_movie " +
                 "(movie_id, user_id, user_preference_description) " +
                 "VALUES (?, ? ,?);";
-        jdbcTemplate.queryForRowSet(sql, movieId, userId, preferenceId);
+        jdbcTemplate.queryForRowSet(sql, movieId, userId, userPreference);
     }
 
     private Movie mapRowToMovie(SqlRowSet rs) {
