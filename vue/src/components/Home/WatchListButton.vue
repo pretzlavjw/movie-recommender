@@ -1,42 +1,44 @@
 <template>
-    <button id="watch-list" class="btn btn-watch-list">Watch List</button>
+    <button id="watch-list" class="btn btn-watch-list" v-on:click="addToWatchlist(); getMovies();">Add To Watch List</button>
 </template>
 
 <script>
-// import MovieService from "@/services/MovieService.js"
+import MovieService from "@/services/MovieService.js"
 
-// export default {
-//   // name: "LikeButton",
-//   // methods: {
-//   //   LikeMovie() {
-//   //     //this.$router.push('/login');
-//   //     //window.location.reload()
-//   //   },
-    
-//   // },
-//   name: 'movie-card',
-//     methods: {
-//         getMovies() {
-//             console.log(this.$store.state.user.id)
-//             MovieService.get(this.$store.state.user.id).then(response => {
-//                 this.$store.commit("SET_MOVIE", response.data)
-//             })
-//         }
-//     },
-//     data() {
-//         return {movies: []}
+export default {
+  name: "WatchlistButton",
+  methods: {
+        addToWatchlist() {
+            const setUserPreference = {
+                id: this.$store.state.user.id,
+                movieId: this.$store.state.movie.movieId,
+                userPreference: "watchlist"
+            }
+            MovieService.create(setUserPreference)
+            
+        },
+        getMovies() {
+            console.log(this.$store.state.user.id)
+            MovieService.get(this.$store.state.user.id).then(response => {
+                this.$store.commit("SET_MOVIE", response.data)
+            })
+        }
+        
+    },
+    data() {
+        return {movies: []}
 
         
-//     },
-//     created() {
-//         this.getMovies()
-//     },
-//     computed: {
-//         movie() {
-//             return this.$store.state.movie
-//         }
-//     }
-// };
+    },
+    created() {
+        this.getMovies()
+    },
+    computed: {
+        movie() {
+            return this.$store.state.movie
+        }
+  }
+ };
 </script>
 
 <style>

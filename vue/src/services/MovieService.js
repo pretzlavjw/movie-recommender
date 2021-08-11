@@ -8,7 +8,7 @@ export default {
     get(id) {
         return axios.get(`/movie/get-movie/${id}`)
     },
-    create(newFavorite) {
-        return axios.post(`/movie/update-status/${newFavorite.id}/${newFavorite.movieId}/${newFavorite.userPreference}/`)
+    create(setUserPreference) {
+        return axios.post(`/movie/update-status/${setUserPreference.id}/${setUserPreference.movieId}/${setUserPreference.userPreference}/`)
     }
 }

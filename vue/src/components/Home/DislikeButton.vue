@@ -1,14 +1,42 @@
 <template>
-    <button id="dislike-button" class="btn-danger" v-on:click="dislikeMovie">Dislike</button>
+    <button id="dislike-button" class="btn-danger" v-on:click="dislikeMovie(); getMovies();">Dislike</button>
 </template>
 
 <script>
+import MovieService from "@/services/MovieService.js"
+
 export default {
   name: "DislikeButton",
   methods: {
-    dislikeMovie() {
-      this.$emit("Reject");
-    }
+        dislikeMovie() {
+            const setUserPreference = {
+                id: this.$store.state.user.id,
+                movieId: this.$store.state.movie.movieId,
+                userPreference: "disliked"
+            }
+            MovieService.create(setUserPreference)
+            
+        },
+        getMovies() {
+            console.log(this.$store.state.user.id)
+            MovieService.get(this.$store.state.user.id).then(response => {
+                this.$store.commit("SET_MOVIE", response.data)
+            })
+        }
+        
+    },
+    data() {
+        return {movies: []}
+
+        
+    },
+    created() {
+        this.getMovies()
+    },
+    computed: {
+        movie() {
+            return this.$store.state.movie
+        }
   }
 };
 </script>
