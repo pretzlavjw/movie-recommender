@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <movie-card/>
-    <buttons/>
+    <buttons id="buttons" />
   </div>
 </template>
 
@@ -22,6 +22,7 @@ export default {
 
 .home {
   color: rgb(238, 14, 238);;
+
 }
 
 h1 {
@@ -30,6 +31,11 @@ h1 {
 }
 
 p {
+  display: flex;
+  justify-content: center;
+}
+
+#buttons {
   display: flex;
   justify-content: center;
 }

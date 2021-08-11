@@ -1,5 +1,5 @@
 <template>
-  <div id="login" class="text-center styles">
+  <div id="login" class="text-center styles white-backing">
     <div id="description">Don't know what to watch? We have you covered. 
       As you favorite movies you like and skip the ones you don't, this app will recommend movies for you to watch. 
       If you find one that you haven't seen, add it to a list to watch later.</div>
@@ -99,17 +99,17 @@ export default {
   }
 
   #description {
-    display: inline-flex;
+    display: inline-block;
     flex-wrap: wrap;
-    margin-top: 40px;
+ 
+    padding-top: 15px;
     text-align: center;
     font-size: 18pt;
   }
-  
-    #login {
-    background: white;
-    margin: 5% 30% 20px 30%;
-    border-radius: 15px 50px;
-    opacity: 80%;
+
+  #login {
+    display: block;
+    margin: 0 auto;
   }
+  
 </style>

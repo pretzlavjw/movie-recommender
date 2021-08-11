@@ -1,5 +1,5 @@
 <template>
-  <div id="register" class="text-center styles">
+  <div id="register" class="text-center styles white-backing">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -103,16 +103,18 @@ export default {
     display: flex;
     height: 100vh;
     flex-direction: column;
-    height: 35rem;
+    height: 20rem;
     align-items: center;
+    align-content: center;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    justify-self: center;
+    margin: 1rem 0,
   }
 
   #register {
-    background: white;
-    margin: 5% 30% 20px 30%;
-    border-radius: 15px 50px;
-    opacity: 80%;
+    display: block;
+    margin: 0 auto;
+
   }
 </style>

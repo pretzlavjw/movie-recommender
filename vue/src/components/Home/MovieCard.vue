@@ -2,14 +2,12 @@
 
   <div class="movie-card">
       <div>
-           <h3 class="movie-title">{{ movie.Title }}</h3>
-           
-               <img v-bind:src="movie.Poster" alt="">
-     
-           
-
-
-           <h5> {{ movie.Plot }} </h5>
+        <h2 class="movie-title">{{ movie.Title }}</h2>
+        <div class="movie-display">
+            <img v-bind:src="movie.Poster" alt="">
+            <h4> {{ movie.Plot }} </h4>
+        </div>
+        
       </div>
      
        
@@ -57,4 +55,21 @@ export default {
 
 <style>
 
+.movie-card {
+    display: flex;
+    justify-content: center;
+    background: white;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 10px, 20px, 10px, 20px;
+    border-radius: 15px 50px;
+    opacity: 80%;
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+img {
+    max-height: 300px;
+}
 </style>
