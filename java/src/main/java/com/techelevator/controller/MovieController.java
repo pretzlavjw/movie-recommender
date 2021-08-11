@@ -35,9 +35,9 @@ public class MovieController {
 
     //Still needs to be debugged. Passing in (null, userId, null)
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping (path = "update-status/{userId}/{user-preference}", method = RequestMethod.POST)
-    public void updateStatus (@PathVariable Long userId, String preferenceId, Long movieId) {
-        movieDAO.updateUserPreferenceStatus(userId, preferenceId, movieId);
+    @RequestMapping (path = "update-status/{userId}/{movieId}/{userPreference}", method = RequestMethod.POST)
+    public void updateStatus (@PathVariable Long userId, @PathVariable Long movieId, @PathVariable String userPreference) {
+        movieDAO.updateUserPreferenceStatus(userId, movieId, userPreference);
     }
 
     @ResponseStatus(HttpStatus.OK)
