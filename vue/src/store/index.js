@@ -18,7 +18,7 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
-    //movies: [],
+    movies: [],
     token: currentToken || '',
     user: currentUser || {},
     movie: {
@@ -49,7 +49,7 @@ export default new Vuex.Store({
       state.movie = data;
     },
     GET_WATCHLIST(state, data) {
-      state.movie = data
+      state.movies = data
     }
   }
 })
