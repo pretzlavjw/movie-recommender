@@ -5,7 +5,7 @@ import com.techelevator.model.Movie;
 import java.util.List;
 
 public interface MovieDAO {
-    List<Movie> getWatchList(Long userId);
+    List<Movie> getList(Long userId, String preference);
     Movie getRecommendedMovie(Long userID);
     List<Movie> generateRecommendedMovieList(Long userId);
     void addMovie(Movie newMovie);

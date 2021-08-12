@@ -9,7 +9,8 @@
         <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
         <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>&nbsp;|&nbsp;
         <router-link :to="{ name: 'watchlist' } ">Watchlist</router-link>&nbsp;|&nbsp;
-        <router-link :to="{ name: 'admin' } ">Add A Movie</router-link>
+        <router-link :to="{ name: 'admin' } ">Add A Movie</router-link>&nbsp;|&nbsp;
+        <router-link :to="{ name: 'favorite-list' } ">Favorites</router-link>
       </div>
       
     </div>

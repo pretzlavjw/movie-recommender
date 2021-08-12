@@ -14,6 +14,9 @@ export default {
     getWatchlist(id) {
         return axios.get(`/movie/watchlist/${id}`)
     },
+    getFavorites(id) {
+        return axios.get(`/movie/favorited/${id}`)
+    },
     addMovie(imdbId) {
         return axios.post(`/movie/create/${imdbId}`, {
             headers: {

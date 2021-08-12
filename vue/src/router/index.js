@@ -8,6 +8,7 @@ import store from '../store/index'
 import Admin from '../views/Admin.vue'
 import Profile from '../views/Profile.vue'
 import WatchList from '../views/WatchList.vue'
+import FavoriteList from '../views/FavoriteList.vue'
 
 Vue.use(Router)
 
@@ -68,6 +69,14 @@ const router = new Router({
       path: "/watchlist",
       name: "watchlist",
       component: WatchList,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/favorite-list",
+      name: "favorite-list",
+      component: FavoriteList,
       meta: {
         requiresAuth: true
       }

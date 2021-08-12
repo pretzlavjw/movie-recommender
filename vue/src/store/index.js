@@ -50,6 +50,9 @@ export default new Vuex.Store({
     },
     GET_WATCHLIST(state, data) {
       state.movies = data
+    },
+    GET_FAVORITES(state, data) {
+      state.movies = data
     }
   }
 })

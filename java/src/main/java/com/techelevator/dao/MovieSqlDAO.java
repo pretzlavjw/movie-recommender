@@ -22,25 +22,9 @@ public class MovieSqlDAO implements MovieDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-//    @Override
-//    public List<Movie> getFavorites() {
-//        List<Movie> movies = new ArrayList<>();
-//        String sql = "SELECT m.* " +
-//                "FROM movies m " +
-//                "JOIN user_movie um ON m.movie_ = um.movie_id " +
-//                "JOIN user u ON um.user_id = u.user_id " +
-//                "WHERE " +
-//                "        u.user_id = ? AND  " +
-//                "        um.user_preference_description = 'favorites';";
-//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql/*, id, moviePreference*/);
-//        while (results.next()) {
-//            movies.add(mapRowToMovie(results));
-//        }
-//        return movies;
-//    }
 
     @Override
-    public List<Movie> getWatchList(Long userId) {
+    public List<Movie> getList(Long userId, String preference) {
         List<Movie> movies = new ArrayList<>();
         String sql = "SELECT m.movie_id, m.imdb_id, m.movie_genre, m.movie_title, m.movie_description, m.movie_image, m.year_released, m.rating, m.movie_length " +
                 "FROM movies m " +
@@ -48,8 +32,8 @@ public class MovieSqlDAO implements MovieDAO {
                 "JOIN users u ON um.user_id = u.user_id " +
                 "WHERE " +
                 "        u.user_id = ? AND  " +
-                "        um.user_preference_description = 'watchlist';";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+                "        um.user_preference_description = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, preference);
         while (results.next()) {
             movies.add(mapRowToMovie(results));
         }
