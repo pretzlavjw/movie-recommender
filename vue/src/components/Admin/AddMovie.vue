@@ -1,6 +1,6 @@
 <template>
     <div>       
-    <h1 class="styles">poop</h1>
+    <h1 class="styles">Add A New Movie</h1>
         <label for="imdbId" class="sr-only">IMDB ID: </label>
         <input
           type="text"
