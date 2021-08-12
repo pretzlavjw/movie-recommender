@@ -25,12 +25,19 @@ export default {
         }
     },
     data() {
-        return {
-            movies: []
+        return {movies: []}
+    },
+    created() {
+        this.getWatchlist()
+    },
+    computed: {
+        movie() {
+            return this.$store.state.movies;
         }
     }
 
 }
+    
 </script>
 
 <style>
