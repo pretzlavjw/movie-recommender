@@ -1,5 +1,5 @@
 <template>
-    <button id="dislike-button" class="btn-danger" v-on:click="dislikeMovie(); getMovies();">Dislike</button>
+    <button id="dislike-button" class="btn-danger" v-on:click="dislikeMovie(); getMovies();">Skip</button>
 </template>
 
 <script>
