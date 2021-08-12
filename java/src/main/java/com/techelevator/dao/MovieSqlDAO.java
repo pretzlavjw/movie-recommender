@@ -42,13 +42,13 @@ public class MovieSqlDAO implements MovieDAO {
     @Override
     public List<Movie> getWatchList(Long userId) {
         List<Movie> movies = new ArrayList<>();
-        String sql = "SELECT m.imdb_id, m.movie_genre, m.movie_title, m.movie_description, m.movie_image, m.year_released, m.rating, m.movie_length " +
+        String sql = "SELECT m.movie_id, m.imdb_id, m.movie_genre, m.movie_title, m.movie_description, m.movie_image, m.year_released, m.rating, m.movie_length " +
                 "FROM movies m " +
                 "JOIN user_movie um ON m.movie_id = um.movie_id " +
-                "JOIN user u ON um.user_id = u.user_id " +
+                "JOIN users u ON um.user_id = u.user_id " +
                 "WHERE " +
                 "        u.user_id = ? AND  " +
-                "        um.user_preference_description = 'watch list';";
+                "        um.user_preference_description = 'watchlist';";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while (results.next()) {
             movies.add(mapRowToMovie(results));

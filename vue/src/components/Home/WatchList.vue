@@ -1,7 +1,9 @@
 <template>
   <div>
-      <movie-card></movie-card>
-      <watch-list/>
+      <!-- not sure about this -->
+      <router-link v-bind:to="{ name: 'movie' }" v-for="movie in $store.state.movies" v-bind:key="movie.movieId">
+          <movie-card v-bind:movie="movie" />
+      </router-link>
   </div>
 </template>
 
@@ -11,6 +13,7 @@ import MovieCard from './MovieCard.vue';
 
 
 export default {
+  components: { MovieCard },
     name: 'watchlist',
     methods: {
         getWatchlist() {
