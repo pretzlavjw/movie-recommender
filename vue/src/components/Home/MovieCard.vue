@@ -3,9 +3,25 @@
   <div class="movie-card">
       <div>
         <h2 class="movie-title">{{ movie.Title }}</h2>
-        <div class="movie-display">
+        <div class="movie-display" id="movie-display">
             <img v-bind:src="movie.Poster" alt="">
-            <h4> {{ movie.Plot }} </h4>
+            <div class="movie-info">
+                <h4> {{ movie.Plot }} </h4>
+                <table>
+                    <tr>
+                        <th>Genres</th>
+                        <th>Length</th>
+                        <th>Rated</th>
+                    </tr>
+                    <tr>
+                        <td>{{ movie.Genres }}</td>
+                        <td>{{ movie.Runtime }}</td>
+                        <td>{{ movie.Rated }}</td>
+                    </tr>
+                </table>
+            </div>
+            
+
         </div>
         
       </div>
@@ -56,7 +72,7 @@ export default {
 <style>
 
 .movie-card {
-    display: flex;
+    /* display: flex;
     justify-content: center;
     background: white;
     flex-direction: column;
@@ -65,10 +81,42 @@ export default {
     border-radius: 15px 50px;
     opacity: 80%;
     width: 500px;
+    text-align: center; */
+    display: flex;
+    justify-content: center;
+    background: white;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 10px, 20px, 10px, 20px;
+    border-radius: 15px 50px;
+    opacity: 80%;
+    width: 45em;
     text-align: center;
+    
 }
 
-img {
-    max-height: 300px;
+#movie-display {
+    display: flex;
+    margin: 20px;
+    align-items: center;
 }
+
+h4 {
+    margin: 10%;
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+
+table {
+    margin: 10%;
+
+}
+
+/* img {
+    max-height: 600px;
+} */
 </style>
