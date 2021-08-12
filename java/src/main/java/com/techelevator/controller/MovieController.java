@@ -43,9 +43,17 @@ public class MovieController {
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/watchlist/{userId}", method = RequestMethod.GET)
     public List<Movie> getWatchList(@PathVariable Long userId) throws MovieNotFoundException {
-        List<Movie> watchList = movieDAO.getWatchList(userId);
+        List<Movie> watchList = movieDAO.getList(userId, "watchlist");
         if(watchList == null) throw new MovieNotFoundException();
         else return watchList;
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/favorited/{userId}", method = RequestMethod.GET)
+    public List<Movie> getFavoritedList(@PathVariable Long userId) throws MovieNotFoundException {
+        List<Movie> favoritedList = movieDAO.getList(userId, "favorited");
+        if(favoritedList == null) throw new MovieNotFoundException();
+        else return favoritedList;
     }
 
     @ResponseStatus(HttpStatus.OK)
