@@ -1,7 +1,8 @@
 <template>
-  <div>
-      <movie-card></movie-card>
-      <watch-list/>
+  <div class="watchlist">
+       <div> <!-- Need a v-for loop to cycle through the array of movies, assign them to a movie card -->
+          <movie-card></movie-card>
+      </div>
   </div>
 </template>
 
@@ -9,47 +10,18 @@
 import MovieService from "@/services/MovieService.js";
 import MovieCard from './MovieCard.vue';
 
-
 export default {
-    name: 'watchlist',
-    methods: {
-        getWatchlist() {
-            console.log(this.$store.state.user.id)
-            MovieService.getWatchlist(this.$store.state.user.id).then(response => {
-                this.$store.commit("GET_WATCHLIST", response.data)
-            })
-        }
+  components: { MovieCard },
+    name: 'watch-list',
+    props: {
+        'userId': Number,
+        'userPreference': String
     },
     data() {
-        return {movies: []}
-
-        
-    },
-    created() {
-        this.getWatchlist()
-    },
-    computed: {
-        movie() {
-            return this.$store.state.movie
+        return {
+            movies: []
         }
     }
-        
-
-
-
-
-//   components: { MovieCard },
-//     name: 'watch-list',
-//     props: {
-//         'userPreference': String
-//     },
-//     data() {
-//         return {
-//             movie: {
-                
-//             }
-//         }
-//     }
 
 }
 </script>
