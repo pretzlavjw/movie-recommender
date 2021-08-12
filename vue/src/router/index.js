@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Admin from '../views/Admin.vue'
+import Profile from '../views/Profile.vue'
 import WatchList from '../views/WatchList.vue'
 
 Vue.use(Router)
@@ -64,12 +65,20 @@ const router = new Router({
       }
     },
     {
-    path: "/watchlist",
-    name: "watchlist",
-    component: WatchList,
-    meta: {
-      requiresAuth: true
-    }
+      path: "/watchlist",
+      name: "watchlist",
+      component: WatchList,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: Profile,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })

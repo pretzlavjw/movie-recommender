@@ -22,7 +22,7 @@ export default {
 <style>
 
 .home {
-  color: rgb(238, 14, 238);;
+  color: rgb(238, 14, 238);
 
 }
 

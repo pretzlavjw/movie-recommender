@@ -11,10 +11,9 @@
 import MovieService from "@/services/MovieService.js";
 import WatchlistCard from "@/components/Home/WatchlistCard.vue"
 
-
 export default {
   components: { WatchlistCard },
-    name: 'watchlist',
+    name: 'watch-list',
     methods: {
         getWatchlist() {
             
@@ -26,35 +25,10 @@ export default {
         }
     },
     data() {
-        return {movies: []}
-
-        
-    },
-    created() {
-        this.getWatchlist()
-    },
-    computed: {
-        movie() {
-            return this.$store.state.movie
+        return {
+            movies: []
         }
     }
-        
-
-
-
-
-//   components: { MovieCard },
-//     name: 'watch-list',
-//     props: {
-//         'userPreference': String
-//     },
-//     data() {
-//         return {
-//             movie: {
-                
-//             }
-//         }
-//     }
 
 }
 </script>
