@@ -1,5 +1,5 @@
 <template>
-    <button id="watch-list" class="btn btn-watch-list" v-on:click="addToWatchlist(); getMovies();">Add To Watch List</button>
+    <button id="watch-list" class="btn btn-watch-list" v-on:click="getWatchlist()">Add To Watch List</button>
 </template>
 
 <script>
@@ -22,7 +22,14 @@ export default {
             MovieService.get(this.$store.state.user.id).then(response => {
                 this.$store.commit("SET_MOVIE", response.data)
             })
+        },
+         getWatchlist() {
+            console.log(this.$store.state.user.id)
+            MovieService.getWatchlist(this.$store.state.user.id).then(response => {
+                this.$store.commit("GET_WATCHLIST", response.data)
+            })
         }
+       
         
     },
     data() {
