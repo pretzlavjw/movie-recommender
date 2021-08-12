@@ -1,6 +1,6 @@
 <template>
     <div>       
-    <h1>poop</h1>
+    <h1 class="styles">poop</h1>
         <label for="imdbId" class="sr-only">IMDB ID: </label>
         <input
           type="text"
@@ -44,7 +44,6 @@ export default {
 </script>
 
 <style>
-div {
-    color: rgb(224, 22, 22);
-}
+@import '../../resources/styles.css'
+
 </style>

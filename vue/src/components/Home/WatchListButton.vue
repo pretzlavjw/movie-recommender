@@ -43,9 +43,9 @@ export default {
 
 <style>
 #watch-list {
-  background-color: #00ADEE;
+  background-color: whitesmoke;
   border: none;
-  color: rgb(255, 255, 255);
+  color: black;
   padding: 16px;
   text-align: center;
   font-size: 24px;
@@ -55,7 +55,7 @@ export default {
 }
 
 #watch-list:hover {
-  background-color: #0390c4;
+  background-color:rgb(148, 148, 148);
   color: white;
 }
 </style>

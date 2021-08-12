@@ -43,7 +43,7 @@ export default {
 
 <style>
 #dislike-button {
-  background-color:   rgb(75, 13, 13);
+  background-color:#00ADEE;
   border: none;
   color: white;
   padding: 16px;
@@ -55,7 +55,7 @@ export default {
 }
 
 #dislike-button:hover {
-  background-color: rgb(112, 26, 26);
+  background-color:  #018cbe;
   color: white;
 }
 
