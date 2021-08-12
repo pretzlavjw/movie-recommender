@@ -2,6 +2,7 @@
   <div class="home">
     <movie-card/>
     <buttons id="buttons" />
+    
   </div>
 </template>
 

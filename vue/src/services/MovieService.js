@@ -10,5 +10,8 @@ export default {
     },
     create(setUserPreference) {
         return axios.post(`/movie/update-status/${setUserPreference.id}/${setUserPreference.movieId}/${setUserPreference.userPreference}/`)
+    },
+    getWatchlist(id) {
+        return axios.get(`/movie/watchlist/${id}`)
     }
 }

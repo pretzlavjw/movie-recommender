@@ -24,7 +24,8 @@ export default new Vuex.Store({
     movie: {
       title: '',
       plot: '',
-      poster: ''
+      poster: '',
+      genre: ''
     }
   },
   mutations: {
@@ -46,6 +47,9 @@ export default new Vuex.Store({
     },
     SET_MOVIE(state, data) {
       state.movie = data;
+    },
+    GET_WATCHLIST(state, data) {
+      state.movie = data
     }
   }
 })

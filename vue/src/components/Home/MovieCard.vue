@@ -9,12 +9,12 @@
                 <h4> {{ movie.Plot }} </h4>
                 <table>
                     <tr>
-                        <th>Genres</th>
+                        <th>Year</th>
                         <th>Length</th>
                         <th>Rated</th>
                     </tr>
                     <tr>
-                        <td>{{ movie.Genres }}</td>
+                        <td>{{ movie.Year }}</td>
                         <td>{{ movie.Runtime }}</td>
                         <td>{{ movie.Rated }}</td>
                     </tr>
