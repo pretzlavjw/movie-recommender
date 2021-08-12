@@ -82,13 +82,13 @@ public class MovieSqlDAO implements MovieDAO {
     }
 
     public Movie getRecommendedMovie(Long userID) {
-        generateRecommendedMovieList(userID);
-        if(recommendedMovies.size() != 0) {
-            Movie movie = recommendedMovies.get(recommendedMovies.size() - 1);
-            recommendedMovies.remove(recommendedMovies.size() - 1);
-            return movie;
+        if(recommendedMovies.size() == 0) {
+            generateRecommendedMovieList(userID);
         }
-        return null;
+        int size = recommendedMovies.size() - 1;
+        Movie movie = recommendedMovies.get(size);
+        recommendedMovies.remove(size);
+        return movie;
     }
 
     public void addMovie(Movie newMovie) {
@@ -107,6 +107,7 @@ public class MovieSqlDAO implements MovieDAO {
                 newMovie.getRuntime());
         newMovie.populateGenreList();
         populateNewMovieGenres(newMovie.getGenreTypes(), newId);
+        recommendedMovies.add(newMovie);
     }
 
 //    public void populateNewMovieGenres(String[] genreArray, Long movieId) {
