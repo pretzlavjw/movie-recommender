@@ -1,6 +1,6 @@
 <template>
   <div class="watchlist">
-      <watch-list-button/>
+    <watch-list/>
        <div class="watchlist-well">
         <label for="watchlist" class="sr-only">Watchlist: </label>
         <input
@@ -14,16 +14,19 @@
         />
        </div>
 
-         <router-link :to="{ name: 'watchlist' }" >View Watchlist</router-link>
-
 
 
   </div>
 </template>
 
 <script>
-export default {
 
+import WatchList from '@/components/Home/WatchList.vue'
+
+export default {
+  components: {
+    WatchList
+  }
 }
 </script>
 
