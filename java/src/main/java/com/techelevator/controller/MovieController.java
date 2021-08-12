@@ -24,8 +24,7 @@ public class MovieController {
     public MovieController (MovieDAO movieDAO) {
         this.movieDAO = movieDAO;
     }
-
-    @PreAuthorize("hasRole('ADMIN')")
+    
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path="/create/{imdbId}", method = RequestMethod.POST)
     public void addNewMovie(@PathVariable String imdbId) {

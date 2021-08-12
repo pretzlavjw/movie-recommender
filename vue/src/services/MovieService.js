@@ -13,5 +13,12 @@ export default {
     },
     getWatchlist(id) {
         return axios.get(`/movie/watchlist/${id}`)
+    },
+    addMovie(imdbId) {
+        return axios.post(`/movie/create/${imdbId}`, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
     }
 }
