@@ -17,4 +17,6 @@ public interface UserDAO {
     boolean create(String username, String password, String role);
 
     void setUserGenre (Long userId);
+
+    void updateGenre (Long userId, String genre);
 }

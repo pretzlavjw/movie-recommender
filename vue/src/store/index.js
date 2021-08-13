@@ -26,6 +26,9 @@ export default new Vuex.Store({
       plot: '',
       poster: '',
       genre: ''
+    },
+    preference: {
+      isChecked: Boolean,
     }
   },
   mutations: {

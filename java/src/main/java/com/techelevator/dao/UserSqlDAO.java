@@ -92,6 +92,19 @@ public class UserSqlDAO implements UserDAO {
         jdbcTemplate.update(addUserGenres, userId, userId, userId, userId, userId, userId, userId, userId, userId, userId);
     }
 
+    public void updateGenre (Long userId, String genre) {
+        String checkForGenre = "SELECT ug.user_id, ug.genre_id FROM user_genre ug JOIN genre g ON ug.genre_id = g.genre_id " +
+                "WHERE ug.user_id = ? AND g.genre_name = ?;";
+        SqlRowSet genreCheck = jdbcTemplate.queryForRowSet(checkForGenre, userId, genre);
+        if (genreCheck.next()) {
+           String removeGenrePreference = "DELETE FROM user_genre WHERE user_id = ? AND genre_id = ?;";
+           jdbcTemplate.update(removeGenrePreference, userId, genreCheck.getLong("genre_id"));
+        } else {
+            String addGenrePreference = "INSERT INTO user_genre (user_id, genre_id) VALUES (?, (SELECT genre_id FROM genre WHERE genre_name = ?));";
+            jdbcTemplate.update(addGenrePreference, userId, genre);
+        }
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getLong("user_id"));
