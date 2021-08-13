@@ -27,9 +27,7 @@ export default new Vuex.Store({
       poster: '',
       genre: ''
     },
-    preference: {
-      isChecked: Boolean,
-    }
+    genrePreferences: ''
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -56,6 +54,9 @@ export default new Vuex.Store({
     },
     GET_FAVORITES(state, data) {
       state.movies = data
+    },
+    SET_PREFERENCES(state, data) {
+      state.genrePreferences = data
     }
   }
 })

@@ -5,7 +5,7 @@
         <label for="genrePreferences" class="styles">Genre Preference: </label>
         <input
           type="text"
-          id="Genre"
+          id="genre"
           class="form-control"
           placeholder="Genre"
           v-model="genre"
@@ -14,6 +14,15 @@
         />
         <button v-on:click="updateGenre">Toggle Genre</button>
     </form>
+    <div>
+         
+    </div>
+    <div class="box">
+    <h2 class="styles" id="options">Options:</h2>
+    <h3 class="styles" id="options">Action | Horror | Comedy | Mystery | Drama | Romance | Fantasy | Thriller | Western | Sci-Fi</h3>
+    <h2 class="styles" id="options">Current Favorites:</h2>
+    <h3 class="styles" id="options">{{ $store.state.genrePreferences }}</h3>
+    </div>
     </div> 
   <!-- <div>
       <form>
@@ -46,17 +55,30 @@ import UserService from "@/services/UserService.js";
 
 export default {
 name: 'select-genre',
-data() {
-    return {
-        genre: ''
-    }
-},
 methods: {
     updateGenre() {
         UserService.updatePreference(this.$store.state.user.id, this.genre)
+    },
+    listFavorites() {
+        UserService.getFavorites(this.$store.state.user.id).then(response => {
+                this.$store.commit("SET_PREFERENCES", response.data)
+    })
+    }
+},
+data() {
+    return {
+        genre: '',
+        genrePreferences: ''
+    }
+},
+created() {
+    return this.listFavorites()
+},
+computed: {
+    favorites() {
+        return this.$store.state.genrePreferences
     }
 }
-
 }
 </script>
 
@@ -66,6 +88,28 @@ form {
     flex-direction: column;
     color: rgb(238, 14, 238);
     align-content: center;
+}
+
+#options {
+    text-align: center;
+}
+
+#genre {
+    margin: 20px;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    background: white;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 10px, 20px, 10px, 20px;
+    border-radius: 15px 50px;
+    opacity: 80%;
+    width: 70em;
+    text-align: center;
 }
 
 </style>
