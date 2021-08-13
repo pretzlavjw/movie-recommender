@@ -1,7 +1,8 @@
 <template>
     <div>       
     <h1 class="styles">Add A New Movie</h1>
-        <label for="imdbId" class="sr-only">IMDB ID: </label>
+    <form>
+        <label for="imdbId" class="styles">IMDB ID: </label>
         <input
           type="text"
           id="imdbId"
@@ -11,7 +12,8 @@
           required
           autofocus
         />
-        <button v-on:click.prevent="addMovie">ADD MOVIE</button>
+        <button v-on:click="addMovie">ADD MOVIE</button>
+    </form>
     </div> 
         
 
@@ -62,6 +64,33 @@ export default {
 </script>
 
 <style>
-@import '../../resources/styles.css'
+@import '../../resources/styles.css';
+
+#imdbId {
+    width: 250px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+button {
+  background-color: #7f34b1;
+  border: none;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 8px;
+  width: 165px;
+}
+
+form {
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    justify-self: center;
+}
+
 
 </style>

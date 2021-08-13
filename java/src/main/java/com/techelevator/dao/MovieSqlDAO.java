@@ -54,8 +54,11 @@ public class MovieSqlDAO implements MovieDAO {
     }
 
     public List<Movie> generateRecommendedMovieList(Long userId) {
-//        List<Movie> recommendedMovies = new ArrayList<>();
-        String sql = "SELECT m.movie_id, m.imdb_id, m.movie_genre, m.movie_title, m.movie_description, m.movie_image, m.year_released, m.rating, m.movie_length " +
+//        String addUserGenres = "INSERT INTO user_genre (user_id, genre_id) " +
+//                "VALUES (?,1), (?,2), (?,3), (?,4), (?,5), (?,6), (?,7), (?,8), (?,9), (?,10);";
+//        jdbcTemplate.update(addUserGenres, userId, userId, userId, userId, userId, userId, userId, userId, userId, userId);
+
+        String sql = "SELECT DISTINCT m.movie_id, m.imdb_id, m.movie_genre, m.movie_title, m.movie_description, m.movie_image, m.year_released, m.rating, m.movie_length " +
                 "FROM movies m " +
                 "JOIN movie_genre mg ON m.movie_id = mg.movie_id " +
                 "JOIN genre g ON mg.genre_id = g.genre_id " +
