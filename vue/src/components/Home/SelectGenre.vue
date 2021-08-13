@@ -96,6 +96,10 @@ form {
 
 #genre {
     margin: 20px;
+    width: 250px;
+    padding: 12px 20px;
+    margin: 20px 0;
+    box-sizing: border-box;
 }
 
 .box {
