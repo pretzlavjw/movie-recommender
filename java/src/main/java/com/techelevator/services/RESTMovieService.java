@@ -23,4 +23,19 @@ public class RESTMovieService implements MovieService {
         }
         return newMovie;
     }
+
+//    public Movie getMoviebyTitle(String title) {
+//        Movie newMovie = null;
+//        String url = "http://www.omdbapi.com/?t=" + title + "&apikey=65bfb6b8";
+//        try {
+//            newMovie = restTemplate.getForObject(url, Movie.class);
+////            newMovie.populateGenreList();
+//        } catch (RestClientResponseException ex) {
+//            System.err.println("No movie found. Please try again.");
+//        } catch (ResourceAccessException ex) {
+//            System.err.println("A network error occurred.");
+//
+//        }
+//        return newMovie;
+//    }
 }

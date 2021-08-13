@@ -14,9 +14,20 @@
         />
         <button v-on:click="addMovie">ADD MOVIE</button>
     </form>
+    <!-- <form>
+        <label for="imdbId" class="styles">MOVIE TITLE: </label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          placeholder="MOVIE TITLE"
+          v-model="titleToAdd"
+          required
+          autofocus
+        />
+        <button v-on:click="addMovieByTitle">ADD MOVIE</button>
+    </form> -->
     </div> 
-        
-
 </template>
 
 <script>
@@ -26,7 +37,8 @@ export default {
     name: 'add-movie',
     data() {
         return {
-            imdbID: ''
+            imdbID: '',
+            titleToAdd: ''
         }
     },
 
@@ -42,7 +54,19 @@ export default {
                 }).catch(error => {
                     console.log(error.response);
                 });
+            
         }
+        // addMoviebyTitle() {
+        //         movieService
+        //         .addMoviebyTitle(this.titleToAdd)
+        //         .then(response => {
+        //             if (response.status === 200) {
+        //                 console.log('It worked!!!!');
+        //             }
+        //         }).catch(error => {
+        //             console.log(error.response);
+        //         }); 
+        // }
         // addMovies() {
         //     MovieService.create(this.$store.state.movie.imdbId).then(response => {
         //         this.$store.push("ADD_MOVIE", )
@@ -69,7 +93,7 @@ export default {
 #imdbId {
     width: 250px;
     padding: 12px 20px;
-    margin: 8px 0;
+    margin: 20px 0;
     box-sizing: border-box;
 }
 

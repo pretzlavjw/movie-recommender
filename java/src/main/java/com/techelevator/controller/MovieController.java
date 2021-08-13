@@ -33,6 +33,14 @@ public class MovieController {
 
     }
 
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(path="/createbytitle/{title}", method = RequestMethod.POST)
+//    public void addMoviebyTitle(@PathVariable String title) {
+//        Movie newMovie = restMovieService.getMoviebyTitle(title);
+//        movieDAO.addMovie(newMovie);
+//
+//    }
+
     //Still needs to be debugged. Passing in (null, userId, null)
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping (path = "update-status/{userId}/{movieId}/{userPreference}", method = RequestMethod.POST)

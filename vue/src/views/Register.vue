@@ -74,6 +74,7 @@ export default {
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
+              this.$store.commit("SET_PREFERENCES", '');
               this.$router.push({
                 path: '/login',
                 query: { registration: 'success' },

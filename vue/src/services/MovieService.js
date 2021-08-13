@@ -24,4 +24,7 @@ export default {
             }
         });
     }
+    // addMoviebyTitle(title) {
+    //     return axios.post(`/movie/createbytitle/${title}`)
+    // }
 }
