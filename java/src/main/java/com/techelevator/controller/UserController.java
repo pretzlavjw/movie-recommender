@@ -34,4 +34,14 @@ public class UserController {
 //        boolean updatedStatus = userDao.updateStatus(preferenceId, imdbId, userDao.findByUsername(principal.getName()));
 //        return updatedStatus;
 //   }
+
+    @RequestMapping(path = "/update/{id}/{genre}", method = RequestMethod.POST)
+    public void updateGenre (@PathVariable Long id, @PathVariable String genre) {
+        userDao.updateGenre(id, genre);
+    }
+
+    @RequestMapping(path = "/favorites/{id}", method = RequestMethod.GET)
+    public String getFavorites (@PathVariable Long id) {
+        return userDao.getFavorites(id);
+    }
 }

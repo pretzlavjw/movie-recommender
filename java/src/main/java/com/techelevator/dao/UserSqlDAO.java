@@ -86,10 +86,35 @@ public class UserSqlDAO implements UserDAO {
         return userCreated;
     }
 
-    public void setUserGenre (Long userId) {
-        String addUserGenres = "INSERT INTO user_genre (user_id, genre_id) " +
-                "VALUES (?,1), (?,2), (?,3), (?,4), (?,5), (?,6), (?,7), (?,8), (?,9), (?,10);";
-        jdbcTemplate.update(addUserGenres, userId, userId, userId, userId, userId, userId, userId, userId, userId, userId);
+//    public void setUserGenre (Long userId) {
+//        String addUserGenres = "INSERT INTO user_genre (user_id, genre_id) " +
+//                "VALUES (?,1), (?,2), (?,3), (?,4), (?,5), (?,6), (?,7), (?,8), (?,9), (?,10);";
+//        jdbcTemplate.update(addUserGenres, userId, userId, userId, userId, userId, userId, userId, userId, userId, userId);
+//    }
+
+    public void updateGenre (Long userId, String genre) {
+        String checkForGenre = "SELECT ug.user_id, ug.genre_id FROM user_genre ug JOIN genre g ON ug.genre_id = g.genre_id " +
+                "WHERE ug.user_id = ? AND g.genre_name ILIKE ?;";
+        SqlRowSet genreCheck = jdbcTemplate.queryForRowSet(checkForGenre, userId, genre);
+        if (genreCheck.next()) {
+           String removeGenrePreference = "DELETE FROM user_genre WHERE user_id = ? AND genre_id = ?;";
+           jdbcTemplate.update(removeGenrePreference, userId, genreCheck.getLong("genre_id"));
+        } else {
+            String addGenrePreference = "INSERT INTO user_genre (user_id, genre_id) VALUES (?, (SELECT genre_id FROM genre WHERE genre_name ILIKE ?));";
+            jdbcTemplate.update(addGenrePreference, userId, genre);
+        }
+    }
+
+    public String getFavorites (Long userId) {
+        String sql = "SELECT g.genre_name FROM genre g JOIN user_genre ug ON g.genre_id = ug.genre_id " +
+                "WHERE ug.user_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        String favorites = "";
+        while(results.next()) {
+            favorites += results.getString("genre_name") + " | ";
+        }
+        favorites = favorites.substring(0, favorites.length() - 2);
+        return favorites;
     }
 
     private User mapRowToUser(SqlRowSet rs) {
