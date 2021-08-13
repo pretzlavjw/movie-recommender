@@ -1,8 +1,8 @@
 <template>
   <div class="watchlist">
+    <h1 class="styles">Watchlist: </h1>
     <watch-list/>
        <div class="watchlist-well">
-        <label for="watchlist" class="sr-only">Watchlist: </label>
         <!-- <input
           type="text"
           id="watchlist"
@@ -31,5 +31,8 @@ export default {
 </script>
 
 <style>
-
+@import '../resources/styles.css';
+label {
+  font-size: 24px;
+}
 </style>

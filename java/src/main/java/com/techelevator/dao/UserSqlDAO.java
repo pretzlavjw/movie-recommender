@@ -86,6 +86,12 @@ public class UserSqlDAO implements UserDAO {
         return userCreated;
     }
 
+    public void setUserGenre (Long userId) {
+        String addUserGenres = "INSERT INTO user_genre (user_id, genre_id) " +
+                "VALUES (?,1), (?,2), (?,3), (?,4), (?,5), (?,6), (?,7), (?,8), (?,9), (?,10);";
+        jdbcTemplate.update(addUserGenres, userId, userId, userId, userId, userId, userId, userId, userId, userId, userId);
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getLong("user_id"));

@@ -1,5 +1,6 @@
 <template>
   <div class="favorite-list">
+    <h1 class="styles">Favorites: </h1>
     <favorite-list/>
        <div class="favorite-list-well">
         <label for="favorite-list" class="sr-only">Favorites: </label>
@@ -31,5 +32,5 @@ export default {
 </script>
 
 <style>
-
+@import '../resources/styles.css';
 </style>
